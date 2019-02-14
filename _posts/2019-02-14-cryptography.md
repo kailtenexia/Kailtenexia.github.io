@@ -2,7 +2,7 @@
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2019-02-14 21:28:15 +0700
-categories: [others]
+categories: [cryptography]
 ---
 cryptography
 
