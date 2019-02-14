@@ -14,6 +14,9 @@ collections:
   project:
     output: true
     permalink: /project/:path/
+   myposts:
+    output: true
+    permalink: /myposts/:path/
 
 social:
     - icon: fa-facebook
