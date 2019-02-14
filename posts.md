@@ -3,6 +3,7 @@ layout: default
 title: My posts
 permalink: /posts/
 ---
+
 <article class="post">
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
