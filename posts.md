@@ -4,7 +4,6 @@ title: My posts
 permalink: /posts/
 ---
 
-프로젝트 내역
 <header class="post-header">
   <h1 class="post-title">Articles by category: {{ page.categories }}</h1>
 </header>
