@@ -37,7 +37,7 @@ urls:
     - text: My Projects
       url: /projects/
     - text: My Posts
-      url: /posts/
+      url: /myposts/
     - text: XML Feed
       url: /feed.xml
 
