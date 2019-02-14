@@ -12,13 +12,13 @@ layout: default
 
     {% assign p_array = "" | split:"|"  %}
     {% for project in site.project %}
-      {% capture p_slug %}{{ project.url | split:"/" | last }},{{ project.url }}{% endcapture %}
+      {% capture p_slug %}{{ myposts.url | split:"/" | last }},{{ myposts.url }}{% endcapture %}
       {% assign p_slug_arr = p_slug | split:"," %}
       {% assign p_array = p_array | push: p_slug_arr  %}
     {% endfor %}
 
     <div class="projects">
-      {% include project_tags.html %}
+      {% include myposts_tags.html %}
    <span class="time">{{ page.date | date_to_string }}</span>
 {% if page.categories %}
   <span class="categories">
@@ -32,10 +32,10 @@ layout: default
 </div>
 
 {% assign hasSimilar = '' %}
-  {% for post in site.posts  %}
+  {% for post in site.myposts  %}
     {% assign postHasSimilar = false %}
-      {% for tag in post.categories %}
-        {% for thisTag in page.categories %}
+      {% for tag in myposts.categories %}
+        {% for thisTag in myposts.categories %}
           {% if postHasSimilar == false and hasSimilar.size < 6 and post != page and tag == thisTag %}
             {% if hasSimilar.size == 0 %}
             <div class="panel-body">
@@ -43,7 +43,7 @@ layout: default
               <ul>
             {% endif %}
                 <li class="relatedPost">
-                  <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+                  <a href="{{ site.url }}{{ myposts.url }}">{{ myposts.title }}</a>
                   {% if post.categories %}
                     (Categories: {% for category in post.categories %}<a href="/category/{{ category }}">{{ category }}</a>{% if forloop.last == false %}, {% endif %}{% endfor %})
                   {% endif %}
