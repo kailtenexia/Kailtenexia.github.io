@@ -12,7 +12,7 @@ layout: default
  <div class="post">{{ content }}</div>
     
    {% assign p_array = "" | split:"|"  %}
-    {% for project in site.project %}
+    {% for project in site.myproject %}
       {% capture p_slug %}{{ project.url | split:"/" | last }},{{ project.url }}{% endcapture %}
       {% assign p_slug_arr = p_slug | split:"," %}
       {% assign p_array = p_array | push: p_slug_arr  %}
@@ -21,7 +21,7 @@ layout: default
     <div class="projects">
       {% include myproject_tags.html %}
       
-      {% for i in site.data.projects %}
+      {% for i in site.data.myprojects %}
       <div class="project-item project-outer" data-tags='{{ i.tags | jsonify | downcase }}'>
         <div class="project-inner">
           <a href="/static/projects/{{ i.image }}" class="thickbox">
