@@ -1,5 +1,5 @@
 ---
-layout: posts_by_category
+layout: myproject
 categories: myproject
 title: myproject
 permalink: /category/myproject
