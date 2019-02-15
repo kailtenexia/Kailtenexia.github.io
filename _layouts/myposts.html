@@ -20,7 +20,7 @@ layout: default
     <div class="projects">
       {% include myproject_tags.html %}
       
-      {% for i in site.data.projects %}
+      {% for i in site.data.myprojects %}
       <div class="project-item project-outer" data-tags='{{ i.tags | jsonify | downcase }}'>
         <div class="project-inner">
           <a href="/static/projects/{{ i.image }}" class="thickbox">
