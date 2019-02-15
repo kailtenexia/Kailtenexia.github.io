@@ -10,12 +10,17 @@ layout: default
 <div class="post-content">
     {{ content }}
 
+ <!--카테고리-->
     {% assign p_array = "" | split:"|"  %}
+  <!--카테고리-->
+ 
+  <!--myproject-->
     {% for project in site.myproject %}
-      {% capture p_slug %}{{ myproject.url | split:"/" | last }},{{ myproject.url }}{% endcapture %}
+      {% capture p_slug %}{{ project.url | split:"/" | last }},{{ project.url }}{% endcapture %}
       {% assign p_slug_arr = p_slug | split:"," %}
       {% assign p_array = p_array | push: p_slug_arr  %}
     {% endfor %}
+   <!--myproject-->
 
     <div class="projects">
       {% include myproject_tags.html %}
