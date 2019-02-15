@@ -1,5 +1,5 @@
 ---
-layout: project
+layout: study
 title: Study
 permalink: /study/
 ---
