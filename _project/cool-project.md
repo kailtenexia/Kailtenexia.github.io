@@ -1,5 +1,5 @@
 ---
-layout: project_single
+layout: project
 title:  "Cool Project"
 slug: "cool-project"
 ---
