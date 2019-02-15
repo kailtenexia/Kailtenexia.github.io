@@ -9,9 +9,9 @@ layout: default
   </header>
 
   <div class="post-content">
+ <div class="post">{{ content }}</div>
     
-
-    {% assign p_array = "" | split:"|"  %}
+   {% assign p_array = "" | split:"|"  %}
     {% for project in site.myproject %}
       {% capture p_slug %}{{ project.url | split:"/" | last }},{{ project.url }}{% endcapture %}
       {% assign p_slug_arr = p_slug | split:"," %}
