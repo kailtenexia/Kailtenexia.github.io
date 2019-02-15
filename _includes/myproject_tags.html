@@ -2,7 +2,7 @@
 	<div id="tag-filter" class="tag-group">
 		<span class="tag-filter tag-cloud all active">project All</span>
 		
-    {% assign tagarray = site.tagarray %}
+    {% assign tagarray = site.mytagarray %}
     {% for project in site.data.myprojects %}
       {% for tag in myproject.tags %}
         {% assign tagarray = tagarray | push: tag %}
