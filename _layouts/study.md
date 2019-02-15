@@ -8,10 +8,10 @@ layout: default
 
 <div class="post-content">
   <hr />
-  {% for category in site.categories %}
+  {% for category in site.mycategories %}
     {% capture category_slug %}{{ category | first }}{% endcapture %}
     {% for c_slug in category_slug %}
-      {% if c_slug == page.categories %}
+      {% if c_slug == page.mycategories %}
         <button class="btn btn-sm btn-default active">{{ c_slug }}</button>
       {% else %}
         <a href="/category/{{ c_slug }}" class="btn btn-sm btn-default">{{ c_slug }}</a>
