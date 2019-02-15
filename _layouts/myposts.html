@@ -21,14 +21,5 @@ layout: default
       {% assign p_array = p_array | push: p_slug_arr  %}
     {% endfor %}
    <!--myproject-->
-
-    <div class="projects">
-      {% include myproject_tags.html %}
-      
-     <!--myproject-->
-      {% for i in site.data.myprojects %}
-      <div class="project-item project-outer" data-tags='{{ i.tags | jsonify | downcase }}'>
-       <!--myproject-->
-     </div>
-    </div>
+ 
   </div>
