@@ -34,6 +34,8 @@ share:
 urls:
     - text: 소개
       url: /about/
+    - text: Study
+      url: /study/
     - text: My Projects
       url: /projects/
     - text: My Posts
