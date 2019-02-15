@@ -9,44 +9,63 @@ layout: default
   </header>
 
   <div class="post-content">
-  <hr />
-  {% for category in site.mycategories %}
-    {% capture category_slug %}{{ category | first }}{% endcapture %}
-    {% for c_slug in mycategory_slug %}
-      {% if c_slug == page.mycategories %}
-        <button class="btn btn-sm btn-default active">{{ c_slug }}</button>
-      {% else %}
-        <a href="/category/{{ c_slug }}" class="btn btn-sm btn-default">{{ c_slug }}</a>
-      {% endif %}
+ <div class="post">{{ content }}</div>
+    
+   {% assign p_array = "" | split:"|"  %}
+    {% for project in site.myproject %}
+      {% capture p_slug %}{{ project.url | split:"/" | last }},{{ project.url }}{% endcapture %}
+      {% assign p_slug_arr = p_slug | split:"," %}
+      {% assign p_array = p_array | push: p_slug_arr  %}
     {% endfor %}
-  {% endfor %}
 
-  <hr />
-  {% if site.mycategories[page.mycategories] %}
-    {% for post in site.mycategories[page.mycategories] %}
-      {% capture post_year %}{{ post.date | date: '%Y' }}{% endcapture %}
-      {% if forloop.first %}
-          <h4>{{ post_year }}</h4>
-          <div class="list-group">
-      {% endif %}
+    <div class="projects">
+      {% include project_tags.html %}
+      
+      {% for i in site.data.myprojects %}
+      <div class="project-item project-outer" data-tags='{{ i.tags | jsonify | downcase }}'>
+        <div class="project-inner">
+          <a href="/static/projects/{{ i.image }}" class="thickbox">
+            <div class="project-img bordered" style="background-image: url('/static/projects/{{ i.image }}');"></div>
+          </a>
+          {% assign p_url = nil %}
+          {% for pr in p_array %}
+            {% if pr contains i.slug %}
+              {% assign p_url = pr[1] %}
+            {% endif %}
+          {% endfor %}
 
-      {% if forloop.first == false %}
-        {% assign previous_index = forloop.index0 | minus: 1 %}
-        {% capture previous_post_year %}{{ site.mycategories[page.mycategories][previous_index].date | date: '%Y' }}{% endcapture %}
-        {% if post_year != previous_post_year %}
+          {% if p_url == nil %}{% assign p_url = i.url %}{% endif %}
+          {% if p_url %}
+            <a class="project-detail" href="{{ p_url }}">
+          {% endif %}
+            <h3 class="project-headlines">{{ i.name }}</h3>
+          {% if p_url %}
+            </a>
+          {% endif %}
+
+          <div class="project-content">
+            <div class="tag-holder">
+             
+              {% if i.tags %}
+                {% for j in i.tags %}
+                  <span class="tags tag-filter" data-tag="{{ j | downcase }}"><a href="#{{ j }}">{{ j }}</a></span>
+                {% endfor %}
+              {% endif %}
+            
+           </div>
           </div>
-          <h4>{{ post_year }}</h4>
-          <div class="list-group">
-        {% endif %}
-      {% endif %}
-        <ul class="posts">
-          <li><a href="{{ post.url }}">{{ post.title }}</a> &raquo; <i><span>{{ post.date | date_to_string }}</span></i></li>
-        </ul>
-      {% if forloop.last %}
-        </div>
-      {% endif %}
-    {% endfor %}
-  {% else %}
-    <p>There are no posts in this categories.</p>
-  {% endif %}
-</div>
+         
+          <div class="project-footer">
+            {% if i.url %}
+              <a href="{{ i.url }}" class="project-link" target="_blank"><i class="fa fa-globe"></i> View</a>
+            {% endif %}
+            <span class="project-timeline">{{ i.date }}</span>
+          </div>
+        
+       </div>
+        <hr>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</article>
