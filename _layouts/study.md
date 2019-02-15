@@ -1,8 +1,9 @@
 ---
 layout: default
 ---
+
 <header class="post-header">
-  <h1 class="post-title"> :{{ page.categories }}</h1>
+  <h1 class="post-title"> {{ page.title }}:{{ page.categories }}</h1>
 </header>
 
 <div class="post-content">
